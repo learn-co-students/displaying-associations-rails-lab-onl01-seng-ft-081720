@@ -1,8 +1,12 @@
 class ArtistsController < ApplicationController
+  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+
   def index
+    @artists = Artist.all
   end
 
   def show
+    # binding.pry
   end
 
   def new
@@ -44,7 +48,11 @@ class ArtistsController < ApplicationController
 
   private
 
+  def set_artist
+    @artist = Artist.find_by_id(params[:id])
+  end
+
   def artist_params
-    params.require(:artist).permit(:name)
+    params.require(:artist).permit(:id, :name)
   end
 end
