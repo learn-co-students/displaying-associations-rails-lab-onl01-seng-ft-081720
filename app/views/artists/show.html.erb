@@ -1,0 +1,10 @@
+<h1><%= @artist.name %></h1>
+<% # binding.pry %>
+<ul>
+<h3> The songs are : </h3>
+    <% if !@artist.songs.empty? %> 
+        <% @artist.songs.each do |song| %>
+            <li> <%= link_to song.title, song_path(song) %></li>
+            <% end %>
+<% end %>
+</ul>
